@@ -9,6 +9,7 @@ let prev_btn = document.querySelector(".prev-track");
 let repeat_btn = document.querySelector(".repeat-track");
 
 let seek_slider = document.querySelector(".seek_slider");
+console.log(seek_slider);
 let volume_slider = document.querySelector(".volume_slider");
 let curr_time = document.querySelector(".current-time");
 let total_duration = document.querySelector(".total-duration");
@@ -195,9 +196,8 @@ function setVolume() {
 volume_slider.addEventListener("click", setVolume)
 
 function setUpdate() {
-   let seekPosition = 0;
    if (!isNaN(curr_track.duration)) {
-      seekPosition = curr_track.currentTime * (100 / curr_track.durattion);
+      let seekPosition = (curr_track.currentTime / curr_track.duration) * 100;
       seek_slider.value = seekPosition;
 
       let currentMinutes = Math.floor(curr_track.currentTime / 60);

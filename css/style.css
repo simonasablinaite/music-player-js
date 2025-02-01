@@ -215,3 +215,30 @@ animation: animate 1.4s linear infinite;
 .stroke:nth-child(7) {
    animation-delay: 0s;
 }
+
+@media (max-width: 576px) {
+   .wrapper {
+      padding: 10px;
+   }
+   .track-art {
+      width: 180px;
+      height: 180px;
+   }
+.track-name {
+   font-size: 1.5rem;
+}
+.track-artist{
+   font-size: 1rem;
+}
+.random-track, 
+.prev-track, .next-track, .repeat-track
+ {
+font-size: 10px;
+}
+.playpause-track {
+   font-size: 12px;
+}
+.loader {
+   height: 40px;
+}
+}
