@@ -6,6 +6,7 @@ let track_artist = document.querySelector(".track-artist");
 let playpause_btn = document.querySelector(".playpause-track");
 let next_btn = document.querySelector(".next-track");
 let prev_btn = document.querySelector(".prev-track");
+let repeat_btn = document.querySelector(".repeat-track");
 
 let seek_slider = document.querySelector(".seek_slider");
 let volume_slider = document.querySelector(".volume_slider");
@@ -46,40 +47,40 @@ const music_list = [
       music: "assets/music/Eurythmics, Annie Lennox, Dave Stewart - Sweet Dreams (Are Made Of This) (Official Video).mp3",
    },
    {
-      img: "",
-      name: "",
-      artist: "",
-      music: "",
+      img: "assets/img/gigi-dagostino.jpg",
+      name: "Another Way",
+      artist: "Gigi D'Agostino",
+      music: "assets/music/Gigi D'Agostino Another Way Lyrics Video.mp3",
    },
    {
-      img: "",
-      name: "",
-      artist: "",
-      music: "",
+      img: "assets/img/groove-coverage.jpg",
+      name: "7 Years & 50 Days",
+      artist: "Groove Coverage",
+      music: "assets/music/Groove Coverage - 7 Years & 50 Days (Official Video).mp3",
    },
    {
-      img: "",
-      name: "",
-      artist: "",
-      music: "",
+      img: "assets/img/Klaas.jpg",
+      name: "Our Own Way",
+      artist: "Klaas",
+      music: "assets/music/Klaas - Our Own Way (Official Video).mp3",
    },
    {
-      img: "",
-      name: "",
-      artist: "",
-      music: "",
+      img: "assets/img/tiesto-lay-low.jpg",
+      name: "Lay Low",
+      artist: "Tiësto",
+      music: "assets/music/Tiësto - Lay Low (Official Music Video).mp3",
    },
    {
-      img: "",
-      name: "",
-      artist: "",
-      music: "",
+      img: "assets/img/uniting-nations.jpg",
+      name: "Out Of Touch",
+      artist: "Uniting Nations",
+      music: "assets/music/Uniting Nations - Out Of Touch (Clean Version).mp3",
    },
    {
-      img: "",
-      name: "",
-      artist: "",
-      music: "",
+      img: "assets/img/zuchero.jpg",
+      name: "Wonderful Life",
+      artist: "Zucchero",
+      music: "assets/music/Zucchero - Wonderful Life.mp3",
    },
 ];
 
@@ -92,11 +93,11 @@ function loadTrack(track_index) {
    curr_track.src = music_list[track_index].music;
    curr_track.load();
 
-   track_art.style.backgroundImage = "url(" + music_list[track_index].img + ")";
+   track_art.style.backgroundImage = `url("${music_list[track_index].img}")`;
    track_name.textContent = music_list[track_index].name;
    track_artist.textContent = music_list[track_index].artist;
 
-   now_playing.textContent = "Playing music " + (track_index + 1) + " of " + music_list.length;
+   now_playing.textContent = `Playing music ${(track_index + 1)} of ${music_list.length}`;
    updateTimer = setInterval(setUpdate, 1000);
    curr_track.addEventListener("ended", nextTrack);
 }
@@ -107,7 +108,7 @@ function reset() {
    seek_slider.value = 0;
 }
 
-function randomTrack() {
+const randomTrack = () => {
    isRandom ? pauseRandom() : playRandom();
 }
 
@@ -128,6 +129,8 @@ function repeatTrack() {
    loadTrack(current_index);
    playTrack();
 }
+
+repeat_btn.addEventListener("click", repeatTrack);
 
 function playpauseTrack() {
    isPlaying ? pauseTrack() : playTrack();
@@ -164,6 +167,8 @@ function nextTrack() {
    playTrack();
 }
 
+next_btn.addEventListener("click", nextTrack);
+
 function prevTrack() {
    if (track_index > 0) {
       track_index -= 1;
@@ -174,14 +179,20 @@ function prevTrack() {
    playTrack();
 }
 
+prev_btn.addEventListener("click", prevTrack);
+
 function seekTo() {
    let seekTo = curr_track.duration * (seek_slider.value / 100);
    curr_track.currentTime = seekTo;
 }
 
+seek_slider.addEventListener("click", seekTo);
+
 function setVolume() {
    curr_track.volume = volume_slider.value / 100;
 }
+
+volume_slider.addEventListener("click", setVolume)
 
 function setUpdate() {
    let seekPosition = 0;
