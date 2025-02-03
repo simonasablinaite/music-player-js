@@ -217,13 +217,36 @@ animation: animate 1.4s linear infinite;
 }
 
 @media (max-width: 576px) {
-   .wrapper {
-      padding: 10px;
-   }
-   .track-art {
-      width: 180px;
-      height: 180px;
-   }
+.wrapper {
+   padding: 5px;
+}
+.track-art {
+   width: 100px;
+   height: 100px;
+}
+.track-name {
+   font-size: 15px;
+}
+.track-artist{
+   font-size: 0.5rem;
+   font-weight: 400;
+}
+.current-time, .total-duration {
+   font-size: 12px;
+}
+.loader {
+   height: 40px;
+}
+}
+
+@media (max-width: 992px) {
+.wrapper {
+   padding: 10px;
+}
+.track-art {
+   width: 150px;
+   height: 150px;
+}
 .track-name {
    font-size: 1.5rem;
 }
@@ -242,3 +265,6 @@ font-size: 10px;
    height: 40px;
 }
 }
+
+
+
