@@ -1,16 +1,15 @@
 import { music_list } from "./data/music-data.js";
-
-music_list
+// Details:
 let now_playing = document.querySelector(".now-playing");
 let track_art = document.querySelector(".track-art");
 let track_name = document.querySelector(".track-name");
 let track_artist = document.querySelector(".track-artist");
-
+// Player buttons:
 let playpause_btn = document.querySelector(".playpause-track");
 let next_btn = document.querySelector(".next-track");
 let prev_btn = document.querySelector(".prev-track");
 let repeat_btn = document.querySelector(".repeat-track");
-
+// Sliders and waves:
 let seek_slider = document.querySelector(".seek_slider");
 let volume_slider = document.querySelector(".volume_slider");
 let curr_time = document.querySelector(".current-time");
@@ -24,9 +23,13 @@ let isPlaying = false;
 let isRandom = false;
 let updateTimer;
 
-loadTrack(track_index);
+const reset = () => {
+   curr_time.textContent = "00:00";
+   total_duration.textContent = "00:00";
+   seek_slider.value = 0;
+}
 
-function loadTrack(track_index) {
+const loadTrack = (track_index) => {
    clearInterval(updateTimer);
    reset();
 
@@ -42,43 +45,33 @@ function loadTrack(track_index) {
    curr_track.addEventListener("ended", nextTrack);
 }
 
-function reset() {
-   curr_time.textContent = "00:00";
-   total_duration.textContent = "00:00";
-   seek_slider.value = 0;
-}
+loadTrack(track_index);
 
 const randomTrack = () => {
    isRandom ? pauseRandom() : playRandom();
 }
 
-randomIcon.addEventListener('click', randomTrack);
-
-function playRandom() {
+const playRandom = () => {
    isRandom = true;
    randomIcon.classList.remove("randomActive");
 }
 
-function pauseRandom() {
+const pauseRandom = () => {
    isRandom = false;
    randomIcon.classList.remove("randomActive");
 }
 
-function repeatTrack() {
+const repeatTrack = () => {
    let current_index = track_index;
    loadTrack(current_index);
    playTrack();
 }
 
-repeat_btn.addEventListener("click", repeatTrack);
-
-function playpauseTrack() {
+const playpauseTrack = () => {
    isPlaying ? pauseTrack() : playTrack();
 }
 
-playpause_btn.addEventListener("click", playpauseTrack);
-
-function playTrack() {
+const playTrack = () => {
    curr_track.play();
    isPlaying = true;
    track_art.classList.add("rotate");
@@ -86,7 +79,7 @@ function playTrack() {
    playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
 }
 
-function pauseTrack() {
+const pauseTrack = () => {
    curr_track.pause();
    isPlaying = false;
    track_art.classList.remove("rotate");
@@ -107,9 +100,7 @@ function nextTrack() {
    playTrack();
 }
 
-next_btn.addEventListener("click", nextTrack);
-
-function prevTrack() {
+const prevTrack = () => {
    if (track_index > 0) {
       track_index -= 1;
    } else {
@@ -119,29 +110,21 @@ function prevTrack() {
    playTrack();
 }
 
-prev_btn.addEventListener("click", prevTrack);
-
-function seekTo() {
+const seekTo = () => {
    let seekTo = curr_track.duration * (seek_slider.value / 100);
    curr_track.currentTime = seekTo;
 }
 
-seek_slider.addEventListener("click", seekTo);
-
-function setVolume() {
+const setVolume = () => {
    curr_track.volume = volume_slider.value / 100;
 }
-
-volume_slider.addEventListener("click", setVolume)
 
 function setUpdate() {
    if (!isNaN(curr_track.duration)) {
       let seekPosition = (curr_track.currentTime / curr_track.duration) * 100;
       seek_slider.value = seekPosition;
-
       let currentMinutes = Math.floor(curr_track.currentTime / 60);
       let currentSeconds = Math.floor(curr_track.currentTime - currentMinutes * 60);
-
       let durationMinutes = Math.floor(curr_track.duration / 60);
       let durationSeconds = Math.floor((curr_track.duration - durationMinutes * 60))
 
@@ -157,12 +140,18 @@ function setUpdate() {
       if (durationMinutes < 10) {
          durationMinutes = "0" + durationMinutes;
       }
-
       curr_time.textContent = currentMinutes + ":" + currentSeconds;
       total_duration.textContent = durationMinutes + ":" + durationSeconds;
    }
-
-
 }
+
+// EventListener'iai:
+randomIcon.addEventListener('click', randomTrack);
+repeat_btn.addEventListener("click", repeatTrack);
+playpause_btn.addEventListener("click", playpauseTrack);
+next_btn.addEventListener("click", nextTrack);
+prev_btn.addEventListener("click", prevTrack);
+seek_slider.addEventListener("click", seekTo);
+volume_slider.addEventListener("click", setVolume);
 
 
