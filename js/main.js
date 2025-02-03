@@ -153,5 +153,3 @@ next_btn.addEventListener("click", nextTrack);
 prev_btn.addEventListener("click", prevTrack);
 seek_slider.addEventListener("click", seekTo);
 volume_slider.addEventListener("click", setVolume);
-
-

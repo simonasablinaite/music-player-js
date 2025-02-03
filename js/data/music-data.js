@@ -18,10 +18,40 @@ const music_list = [
       music: "assets/music/Eiffel65 - Voglia di dance all night.mp3",
    },
    {
+      img: "assets/img/elayork.jpg",
+      name: "Atvaziuoju",
+      artist: "Elayork",
+      music: "assets/music/Elayork_-_Atva_iuoju.mp3",
+   },
+   {
+      img: "assets/img/elayork.jpg",
+      name: "Ka Man Jauti",
+      artist: "Elayork",
+      music: "assets/music/Elayork_-_K_Man_Jauti.mp3",
+   },
+   {
+      img: "assets/img/elayork.jpg",
+      name: "Veikia",
+      artist: "Elayork",
+      music: "assets/music/Elayork_-_Veikia_Lyric_Video.mp3",
+   },
+   {
       img: "assets/img/Eurythmics-Annie Lennox-Dave Stewart.jpg",
       name: "Sweet Dreams (Official Video)",
       artist: "Eurythmics, Annie Lennox, Dave Stewart",
       music: "assets/music/Eurythmics, Annie Lennox, Dave Stewart - Sweet Dreams (Are Made Of This) (Official Video).mp3",
+   },
+   {
+      img: "",
+      name: "Vienas",
+      artist: "Free Finga",
+      music: "assets/music/Free_Finga_-_Vienas_Official_Music_Video.mp3",
+   },
+   {
+      img: "assets/img/vagelis.jpg",
+      name: "Pasilik",
+      artist: "Gabrielius Vagelis",
+      music: "assets/music/Gabrielius_Vagelis_-_Pasilik.mp3",
    },
    {
       img: "assets/img/gigi-dagostino.jpg",
@@ -40,6 +70,12 @@ const music_list = [
       name: "Our Own Way",
       artist: "Klaas",
       music: "assets/music/Klaas - Our Own Way (Official Video).mp3",
+   },
+   {
+      img: "assets/music/Nombeko_Auguste_Vaik_tai_Per_Mane.mp3",
+      name: "Vaikstai Per Mane",
+      artist: "Nombeko_Auguste",
+      music: "assets/music/Nombeko_Auguste_Vaik_tai_Per_Mane.mp3",
    },
    {
       img: "assets/img/tiesto-lay-low.jpg",
